@@ -5,6 +5,14 @@ export const apiClient = axios.create({
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json",
-    Authorization: `Bearer ${window.localStorage.getItem("access_token")}`,
   },
+});
+
+apiClient.interceptors.request.use((config) => {
+  const accessToken = localStorage.getItem("access_token");
+
+  if (accessToken && config.headers) {
+    config.headers["Authorization"] = `Bearer ${accessToken}`;
+  }
+  return config;
 });
