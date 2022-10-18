@@ -11,7 +11,7 @@ function TodoHeader() {
       <button
         css={logoutBtnCss}
         onClick={() => {
-          localStorage.removeItem("token");
+          localStorage.removeItem("access_token");
           navigate("/");
         }}
       >
@@ -25,13 +25,13 @@ const labelCss = css`
   font-size: 2.3em;
   justify-content: space-between;
   display: flex;
-  margin: 30px 40px;
+  margin: 30px 35px;
   font-weight: bold;
 `;
 
 const logoutBtnCss = css`
-  background-color: #573b8a;
-  color: #fff;
+  background-color: #e0dede;
+  color: #573b8a;
   font-weight: bold;
   outline: none;
   border: none;

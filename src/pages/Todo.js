@@ -11,10 +11,9 @@ function Todo() {
   let navigate = useNavigate();
 
   const [todoData, setTodoData] = useState();
-  console.log("todoData", todoData);
 
   useEffect(() => {
-    if (!window.localStorage.getItem("access_token")) {
+    if (!localStorage.getItem("access_token")) {
       navigate("/");
     }
     const getData = () => {
@@ -43,8 +42,7 @@ const mainContainer = css`
   height: 530px;
   background: red;
   overflow: hidden;
-  background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38")
-    no-repeat center/ cover;
+  background: linear-gradient(to bottom, #26224f, #302b63, #26224f);
   border-radius: 10px;
   box-shadow: 5px 20px 50px #000;
 `;

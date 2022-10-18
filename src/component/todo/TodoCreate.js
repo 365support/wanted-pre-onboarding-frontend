@@ -1,54 +1,28 @@
 /** @jsxImportSource @emotion/react */
-import axios from "axios";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { css } from "@emotion/react";
-import { ToastContainer } from "react-toastify";
-import notice from "../../utils/noticeUtils";
+import { createTodoApi } from "../../api/todo";
 
 function TodoCreate({ todoData, setTodoData }) {
-  const ref = useRef();
+  const inputRef = useRef();
 
-  const onChange = useCallback((e) => {
-    ref.current = { ...ref.current, [e.target.name]: e.target.value };
-  }, []);
-
-  const handleUpdateTodo = (e) => {
-    if (!ref.current) return;
+  const handleCreatedTodo = (e) => {
     e.preventDefault();
-    const { todoCreate } = ref.current;
-
-    axios
-      .post(
-        `${process.env.REACT_APP_API_URL}/todos`,
-        { todo: todoCreate },
-        {
-          headers: {
-            Authorization: `Bearer ${window.localStorage.getItem(
-              "access_token"
-            )}`,
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response);
-        e.target.reset();
-        setTodoData([...todoData, response.data]);
+    if (!inputRef.current.value) return;
+    createTodoApi(inputRef.current.value)
+      .then((res) => {
+        inputRef.current.value = "";
+        setTodoData([...todoData, res.data]);
       })
-      .catch((err) => console.log("주 에러 : ", err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
-    <form onSubmit={handleUpdateTodo} css={todoCreateContainer}>
-      <input
-        autoFocus
-        name="todoCreate"
-        onChange={onChange}
-        placeholder="todo List"
-        css={inputCss}
-      />
+    <form onSubmit={handleCreatedTodo} css={todoCreateContainer}>
+      <input autoFocus placeholder="todo List" css={inputCss} ref={inputRef} />
       <button css={buttonCss}>추가</button>
-      <ToastContainer position="top-right" />
     </form>
   );
 }
@@ -60,13 +34,12 @@ const todoCreateContainer = css`
 `;
 
 const inputCss = css`
-  width: 56%;
+  width: 58%;
   height: 20px;
   background: #e0dede;
   justify-content: center;
   display: flex;
-  margin-right: 10px;
-  /* margin: 20px auto; */
+  margin-right: 12px;
   padding: 10px;
   border: none;
   outline: none;
