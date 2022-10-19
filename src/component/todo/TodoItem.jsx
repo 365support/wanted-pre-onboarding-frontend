@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { css } from "@emotion/react";
 import { MdDone } from "react-icons/md";
 import { ToastContainer } from "react-toastify";
@@ -9,9 +9,9 @@ const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
   const [modifyTogle, setModifyTogle] = useState(false);
   const [content, setContent] = useState(list);
 
-  const onInputChange = (e) => {
+  const onInputChange = useCallback((e) => {
     setContent({ ...content, todo: e.target.value });
-  };
+  }, []);
 
   const onCheckClick = () => {
     setContent({ ...content, isCompleted: !list.isCompleted });
@@ -28,10 +28,7 @@ const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
   };
 
   const handleCancelBtnClick = () => {
-    if (!content.todo) {
-      notice("error", "할 일을 입력해 주세요");
-      return;
-    }
+    setContent({ ...content, todo: list.todo });
     setModifyTogle(false);
   };
 
