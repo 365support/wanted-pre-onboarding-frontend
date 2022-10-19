@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { COLOR } from "./style";
 
 export const customBodyStyle = css`
   body {
@@ -9,7 +10,12 @@ export const customBodyStyle = css`
     align-items: center;
     min-height: 100vh;
     font-family: "Jost", sans-serif;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    background: linear-gradient(
+      to bottom,
+      ${COLOR.Purple500},
+      ${COLOR.Purple300},
+      ${COLOR.Purple400}
+    );
   }
 `;
 
@@ -18,7 +24,12 @@ export const mainContainer = css`
   height: 530px;
   background: red;
   overflow: hidden;
-  background: linear-gradient(to bottom, #26224f, #302b63, #26224f);
+  background: linear-gradient(
+    to bottom,
+    ${COLOR.Purple450},
+    ${COLOR.Purple300},
+    ${COLOR.Purple450}
+  );
   border-radius: 10px;
   box-shadow: 5px 20px 50px #000;
 `;

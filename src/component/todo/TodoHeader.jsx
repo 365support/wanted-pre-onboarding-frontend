@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useNavigate } from "react-router";
+import { COLOR } from "../../shared/style";
 
 const TodoHeader = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const TodoHeader = () => {
   );
 };
 const labelCss = css`
-  color: #fff;
+  color: ${COLOR.White100};
   font-size: 2.3em;
   justify-content: space-between;
   display: flex;
@@ -30,8 +31,8 @@ const labelCss = css`
 `;
 
 const logoutBtnCss = css`
-  background-color: #e0dede;
-  color: #573b8a;
+  background-color: ${COLOR.White200};
+  color: ${COLOR.Purple200};
   font-weight: bold;
   outline: none;
   border: none;

@@ -5,6 +5,7 @@ import notice from "../../utils/noticeUtils";
 import { signUpApi } from "../../api/auth";
 import useSignForm from "../../hooks/useSignForm";
 import * as authSytle from "./authStyle";
+import { COLOR } from "../../shared/style";
 
 const SignUp = ({ onOpen, onClose }) => {
   const {
@@ -65,7 +66,7 @@ const SignUp = ({ onOpen, onClose }) => {
           ${authSytle.buttonCss}
           background-color: ${!emailIsAbled || !passwordIsAbled
             ? "gray"
-            : "#573b8a"};
+            : `${COLOR.Purple200}`};
         `}
       >
         Sign up
@@ -77,12 +78,12 @@ const SignUp = ({ onOpen, onClose }) => {
 
 const labelCss = css`
   ${authSytle.labelCss}
-  color: #fff;
+  color: ${COLOR.White100};
 `;
 
 const errorWrapper = css`
   ${authSytle.errorWrapper}
-  color: #fff;
+  color: ${COLOR.White100};
 `;
 
 export default SignUp;

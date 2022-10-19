@@ -4,6 +4,7 @@ import { css } from "@emotion/react";
 import { MdDone } from "react-icons/md";
 import { ToastContainer } from "react-toastify";
 import notice from "../../utils/noticeUtils";
+import { COLOR } from "../../shared/style";
 
 const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
   const [modifyTogle, setModifyTogle] = useState(false);
@@ -60,8 +61,10 @@ const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
           <div
             css={css`
               ${CheckCircle}
-              border : ${list.isCompleted ? " 1px solid #e0dede" : ""};
-              color: ${list.isCompleted ? "#e0dede" : ""};
+              border : ${list.isCompleted
+                ? ` 1px solid ${COLOR.White100}`
+                : ""};
+              color: ${list.isCompleted ? `${COLOR.White100}` : ""};
             `}
             onClick={(e) => onCheckClick(e)}
           >
@@ -102,7 +105,7 @@ const todoListContainer = css`
 
 const inputCss = css`
   width: 36%;
-  background-color: #e0dede;
+  background-color: ${COLOR.White200};
   justify-content: center;
   display: flex;
   margin-right: 10px;
@@ -114,9 +117,9 @@ const inputCss = css`
 `;
 
 const basicButton = css`
-  color: #fff;
+  color: ${COLOR.White100};
   font-weight: bold;
-  background-color: #573b8a;
+  background-color: ${COLOR.Purple200};
   outline: none;
   border: none;
   border-radius: 5px;
@@ -130,14 +133,14 @@ const basicButton = css`
 
 const customButton = css`
   ${basicButton}
-  background-color: #8161BB;
+  background-color: ${COLOR.Purple100};
 `;
 
 const CheckCircle = css`
   width: 22px;
   height: 22px;
   border-radius: 16px;
-  border: 1px solid #ced4da;
+  border: 1px solid ${COLOR.White200};
   font-size: 24px;
   display: flex;
   align-items: center;

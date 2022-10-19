@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { useIsShown } from "../hooks/useIsShown";
 import Login from "../component/auth/Login";
 import SignUp from "../component/auth/SignUp";
-import { mainContainer } from "../shard/globalStyle";
+import { mainContainer } from "../shared/globalStyle";
 
 const Auth = () => {
   const [isShown, onOpen, onClose] = useIsShown();

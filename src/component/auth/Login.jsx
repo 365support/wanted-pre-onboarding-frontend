@@ -6,6 +6,7 @@ import { loginApi } from "../../api/auth";
 import notice from "../../utils/noticeUtils";
 import useSignForm from "../../hooks/useSignForm";
 import * as authSytle from "./authStyle";
+import { COLOR } from "../../shared/style";
 
 const Login = ({ isShown, onOpen }) => {
   const navigate = useNavigate();
@@ -72,7 +73,7 @@ const Login = ({ isShown, onOpen }) => {
             ${authSytle.buttonCss}
             background-color: ${!emailIsAbled || !passwordIsAbled
               ? "gray"
-              : "#573b8a"};
+              : `${COLOR.Purple200}`};
           `}
         >
           Login
@@ -85,20 +86,20 @@ const Login = ({ isShown, onOpen }) => {
 
 const loginContainer = css`
   height: 460px;
-  background: #eee;
+  background: ${COLOR.White100};
   border-radius: 60% / 10%;
   transition: 0.8s ease-in-out;
 `;
 
 const labelCss = css`
   ${authSytle.labelCss}
-  color: #573b8a;
+  color: ${COLOR.Purple200};
   padding-top: 15px;
 `;
 
 const errorWrapper = css`
   ${authSytle.errorWrapper}
-  color: #573b8a;
+  color: ${COLOR.Purple200};
 `;
 
 export default Login;

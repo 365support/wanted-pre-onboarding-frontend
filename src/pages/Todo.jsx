@@ -5,7 +5,7 @@ import { getTodoApi } from "../api/todo";
 import TodoCreate from "../component/todo/TodoCreate";
 import TodoHeader from "../component/todo/TodoHeader";
 import TodoList from "../component/todo/TodoList";
-import { mainContainer } from "../shard/globalStyle";
+import { mainContainer } from "../shared/globalStyle";
 
 const Todo = () => {
   let navigate = useNavigate();

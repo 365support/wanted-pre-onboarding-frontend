@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
+import { COLOR } from "../../shared/style";
 
 export const labelCss = css`
-  color: #fff;
+  color: ${COLOR.White100};
   font-size: 2.3em;
   justify-content: center;
   display: flex;
@@ -14,7 +15,7 @@ export const labelCss = css`
 export const inputCss = css`
   width: 60%;
   height: 20px;
-  background: #e0dede;
+  background: ${COLOR.White200};
   justify-content: center;
   display: flex;
   margin: 20px auto;
@@ -30,7 +31,7 @@ export const buttonCss = css`
   margin: 10px auto;
   justify-content: center;
   display: block;
-  color: #fff;
+  color: ${COLOR.White100};
   font-size: 1em;
   font-weight: bold;
   margin-top: 20px;
@@ -42,7 +43,7 @@ export const buttonCss = css`
 `;
 
 export const errorWrapper = css`
-  color: #fff;
+  color: ${COLOR.White100};
   display: flex;
   flex-direction: column;
   justify-content: center;

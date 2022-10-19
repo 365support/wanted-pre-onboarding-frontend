@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { css } from "@emotion/react";
 import { createTodoApi } from "../../api/todo";
+import { COLOR } from "../../shared/style";
 
 const TodoCreate = ({ todoData, setTodoData }) => {
   const inputRef = useRef();
@@ -36,7 +37,7 @@ const todoCreateContainer = css`
 const inputCss = css`
   width: 58%;
   height: 20px;
-  background: #e0dede;
+  background: ${COLOR.White200};
   justify-content: center;
   display: flex;
   margin-right: 12px;
@@ -47,10 +48,10 @@ const inputCss = css`
 `;
 
 const buttonCss = css`
-  color: #fff;
+  color: ${COLOR.White100};
   padding: 10px;
   font-weight: bold;
-  background-color: #573b8a;
+  background-color: ${COLOR.Purple200};
   outline: none;
   border: none;
   border-radius: 5px;
