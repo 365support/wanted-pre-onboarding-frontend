@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from "react";
+import { memo, useState } from "react";
 import { css } from "@emotion/react";
 import { MdDone } from "react-icons/md";
 import { ToastContainer } from "react-toastify";
@@ -150,4 +150,4 @@ const CheckCircle = css`
   cursor: pointer;
 `;
 
-export default TodoItem;
+export default memo(TodoItem);
