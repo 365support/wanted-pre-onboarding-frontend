@@ -7,7 +7,7 @@ import notice from "../../utils/noticeUtils";
 import useSignForm from "../../hooks/useSignForm";
 import * as authSytle from "./authStyle";
 
-function Login({ isShown, onOpen }) {
+const Login = ({ isShown, onOpen }) => {
   const navigate = useNavigate();
   const {
     userInfo,
@@ -81,7 +81,7 @@ function Login({ isShown, onOpen }) {
       <ToastContainer position="top-right" />
     </>
   );
-}
+};
 
 const loginContainer = css`
   height: 460px;

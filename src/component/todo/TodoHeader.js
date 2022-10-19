@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import { useNavigate } from "react-router";
 
-function TodoHeader() {
+const TodoHeader = () => {
   const navigate = useNavigate();
 
   return (
@@ -19,7 +19,7 @@ function TodoHeader() {
       </button>
     </div>
   );
-}
+};
 const labelCss = css`
   color: #fff;
   font-size: 2.3em;

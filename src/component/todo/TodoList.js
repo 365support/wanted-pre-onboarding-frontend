@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { deleteTodoApi, updateTodoApi } from "../../api/todo";
 import TodoItem from "./TodoItem";
 
-function TodoList({ todoData, setTodoData }) {
+const TodoList = ({ todoData, setTodoData }) => {
   const handleTodoUpdate = (content) => {
     updateTodoApi(content.id, content.todo, content.isCompleted)
       .then(() => {
@@ -42,7 +42,7 @@ function TodoList({ todoData, setTodoData }) {
       ))}
     </div>
   );
-}
+};
 
 const todoWrapper = css`
   overflow: auto;

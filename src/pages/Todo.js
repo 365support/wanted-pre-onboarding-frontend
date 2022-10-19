@@ -7,7 +7,7 @@ import TodoCreate from "../component/todo/TodoCreate";
 import TodoHeader from "../component/todo/TodoHeader";
 import TodoList from "../component/todo/TodoList";
 
-function Todo() {
+const Todo = () => {
   let navigate = useNavigate();
 
   const [todoData, setTodoData] = useState();
@@ -35,7 +35,7 @@ function Todo() {
       <TodoList todoData={todoData} setTodoData={setTodoData} />
     </div>
   );
-}
+};
 
 const mainContainer = css`
   width: 350px;

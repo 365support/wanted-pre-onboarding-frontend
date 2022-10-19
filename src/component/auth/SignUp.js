@@ -6,7 +6,7 @@ import { signUpApi } from "../../api/auth";
 import useSignForm from "../../hooks/useSignForm";
 import * as authSytle from "./authStyle";
 
-function SignUp({ onOpen, onClose }) {
+const SignUp = ({ onOpen, onClose }) => {
   const {
     userInfo,
     handleInputValue,
@@ -73,7 +73,7 @@ function SignUp({ onOpen, onClose }) {
       <ToastContainer position="top-right" />
     </form>
   );
-}
+};
 
 const labelCss = css`
   ${authSytle.labelCss}

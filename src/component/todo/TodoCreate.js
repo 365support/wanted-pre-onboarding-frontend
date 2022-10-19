@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { css } from "@emotion/react";
 import { createTodoApi } from "../../api/todo";
 
-function TodoCreate({ todoData, setTodoData }) {
+const TodoCreate = ({ todoData, setTodoData }) => {
   const inputRef = useRef();
 
   const handleCreatedTodo = (e) => {
@@ -25,7 +25,7 @@ function TodoCreate({ todoData, setTodoData }) {
       <button css={buttonCss}>추가</button>
     </form>
   );
-}
+};
 
 const todoCreateContainer = css`
   margin: 10px 0px;

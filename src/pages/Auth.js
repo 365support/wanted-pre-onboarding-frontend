@@ -6,7 +6,7 @@ import { useIsShown } from "../hooks/useIsShown";
 import Login from "../component/auth/Login";
 import SignUp from "../component/auth/SignUp";
 
-function Auth() {
+const Auth = () => {
   const [isShown, onOpen, onClose] = useIsShown();
 
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function Auth() {
       <Login isShown={isShown} onOpen={onOpen} />
     </div>
   );
-}
+};
 
 const mainContainer = css`
   width: 350px;
