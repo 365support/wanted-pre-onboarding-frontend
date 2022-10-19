@@ -18,12 +18,20 @@ const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
     handleTodoUpdate({ ...content, isCompleted: !list.isCompleted });
   };
 
-  const handleCompleteBtnClick = (content) => {
+  const handleCompleteBtnClick = () => {
     if (!content.todo) {
       notice("error", "할 일을 입력해 주세요");
       return;
     }
     handleTodoUpdate(content);
+    setModifyTogle(false);
+  };
+
+  const handleCancelBtnClick = () => {
+    if (!content.todo) {
+      notice("error", "할 일을 입력해 주세요");
+      return;
+    }
     setModifyTogle(false);
   };
 
@@ -43,13 +51,10 @@ const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
             css={inputCss}
             onChange={onInputChange}
           />
-          <button
-            onClick={() => handleCompleteBtnClick(content)}
-            css={customButton}
-          >
+          <button onClick={handleCompleteBtnClick} css={customButton}>
             완료
           </button>
-          <button css={basicButton} onClick={() => setModifyTogle(false)}>
+          <button css={basicButton} onClick={handleCancelBtnClick}>
             취소
           </button>
         </>
