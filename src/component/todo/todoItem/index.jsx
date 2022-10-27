@@ -6,7 +6,7 @@ import notice from "../../../utils/noticeUtils";
 import * as todoItemStyle from "./style";
 
 const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
-  const [modifyTogle, setModifyTogle] = useState(false);
+  const [modifyToggle, setModifyToggle] = useState(false);
   const [content, setContent] = useState(list);
 
   const onInputChange = useCallback((e) => {
@@ -24,17 +24,17 @@ const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
       return;
     }
     handleTodoUpdate(content);
-    setModifyTogle(false);
+    setModifyToggle(false);
   };
 
   const handleCancelBtnClick = () => {
     setContent({ ...content, todo: list.todo });
-    setModifyTogle(false);
+    setModifyToggle(false);
   };
 
   return (
     <div css={todoItemStyle.todoListContainer}>
-      {modifyTogle ? (
+      {modifyToggle ? (
         <>
           <div css={todoItemStyle.hiddencheckCircle}></div>
           <input
@@ -69,7 +69,7 @@ const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
           </todoItemStyle.ContentDiv>
 
           <button
-            onClick={() => setModifyTogle(true)}
+            onClick={() => setModifyToggle(true)}
             css={todoItemStyle.customButton}
           >
             수정
