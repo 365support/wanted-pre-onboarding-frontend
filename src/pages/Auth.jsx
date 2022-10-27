@@ -2,9 +2,9 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useIsShown } from "../hooks/useIsShown";
-import Login from "../component/auth/Login";
-import SignUp from "../component/auth/SignUp";
 import { mainContainer } from "../shared/globalStyle";
+import Login from "../component/auth/login";
+import SignUp from "../component/auth/signUp";
 
 const Auth = () => {
   const [isShown, onOpen, onClose] = useIsShown();

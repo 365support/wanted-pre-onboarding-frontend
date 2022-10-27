@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { ToastContainer } from "react-toastify";
-import notice from "../../utils/noticeUtils";
-import { signUpApi } from "../../api/auth";
-import useSignForm from "../../hooks/useSignForm";
-import * as authSytle from "./authStyle";
-import { COLOR } from "../../shared/style";
+import notice from "../../../utils/noticeUtils";
+import { signUpApi } from "../../../api/auth";
+import useSignForm from "../../../hooks/useSignForm";
+import * as authSytle from "../authStyle";
+import { signUperrorWrapper, signUplabelCss } from "./style";
 
 const SignUp = ({ onOpen, onClose }) => {
   const {
@@ -32,7 +31,7 @@ const SignUp = ({ onOpen, onClose }) => {
 
   return (
     <form onSubmit={handleSignUpClick}>
-      <label aria-hidden="true" css={labelCss} onClick={onClose}>
+      <label aria-hidden="true" css={signUplabelCss} onClick={onClose}>
         Sign up
       </label>
 
@@ -51,7 +50,7 @@ const SignUp = ({ onOpen, onClose }) => {
         onChange={handleInputValue("password")}
       />
 
-      <div css={errorWrapper}>
+      <div css={signUperrorWrapper}>
         {emailWarnList?.map((item) => (
           <div key={item}>{item}</div>
         ))}
@@ -60,30 +59,16 @@ const SignUp = ({ onOpen, onClose }) => {
         ))}
       </div>
 
-      <button
+      <authSytle.AuthButton
         disabled={!emailIsAbled || !passwordIsAbled}
-        css={css`
-          ${authSytle.buttonCss}
-          background-color: ${!emailIsAbled || !passwordIsAbled
-            ? "gray"
-            : `${COLOR.Purple200}`};
-        `}
+        emailisabled={emailIsAbled.toString()}
+        passwordisabled={passwordIsAbled.toString()}
       >
         Sign up
-      </button>
+      </authSytle.AuthButton>
       <ToastContainer position="top-right" />
     </form>
   );
 };
-
-const labelCss = css`
-  ${authSytle.labelCss}
-  color: ${COLOR.White100};
-`;
-
-const errorWrapper = css`
-  ${authSytle.errorWrapper}
-  color: ${COLOR.White100};
-`;
 
 export default SignUp;

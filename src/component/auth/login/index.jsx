@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { useNavigate } from "react-router";
-import { css } from "@emotion/react";
 import { ToastContainer } from "react-toastify";
-import { loginApi } from "../../api/auth";
-import notice from "../../utils/noticeUtils";
-import useSignForm from "../../hooks/useSignForm";
-import * as authSytle from "./authStyle";
-import { COLOR } from "../../shared/style";
+import { loginApi } from "../../../api/auth";
+import notice from "../../../utils/noticeUtils";
+import useSignForm from "../../../hooks/useSignForm";
+import * as authSytle from "../authStyle";
+import { LoginContainer, loginErrorWrapper, loginLabelCss } from "./style";
 
 const Login = ({ isShown, onOpen }) => {
   const navigate = useNavigate();
@@ -33,14 +32,8 @@ const Login = ({ isShown, onOpen }) => {
 
   return (
     <>
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        css={css`
-          ${loginContainer}
-          transform: ${!isShown ? "translateY(20px)" : "translateY(-290px)"};
-        `}
-      >
-        <label aria-hidden="true" onClick={onOpen} css={labelCss}>
+      <LoginContainer isShown={isShown} onSubmit={(e) => e.preventDefault()}>
+        <label aria-hidden="true" onClick={onOpen} css={loginLabelCss}>
           Login
         </label>
         <input
@@ -57,7 +50,7 @@ const Login = ({ isShown, onOpen }) => {
           required=""
           onChange={handleInputValue("password")}
         />
-        <div css={errorWrapper}>
+        <div css={loginErrorWrapper}>
           {emailWarnList?.map((item) => (
             <div key={item}>{item}</div>
           ))}
@@ -66,40 +59,18 @@ const Login = ({ isShown, onOpen }) => {
           ))}
         </div>
 
-        <button
+        <authSytle.AuthButton
           onClick={handleLoginClick}
           disabled={!emailIsAbled || !passwordIsAbled}
-          css={css`
-            ${authSytle.buttonCss}
-            background-color: ${!emailIsAbled || !passwordIsAbled
-              ? "gray"
-              : `${COLOR.Purple200}`};
-          `}
+          emailisabled={emailIsAbled.toString()}
+          passwordisabled={passwordIsAbled.toString()}
         >
           Login
-        </button>
-      </form>
+        </authSytle.AuthButton>
+      </LoginContainer>
       <ToastContainer position="top-right" />
     </>
   );
 };
-
-const loginContainer = css`
-  height: 460px;
-  background: ${COLOR.White100};
-  border-radius: 60% / 10%;
-  transition: 0.8s ease-in-out;
-`;
-
-const labelCss = css`
-  ${authSytle.labelCss}
-  color: ${COLOR.Purple200};
-  padding-top: 15px;
-`;
-
-const errorWrapper = css`
-  ${authSytle.errorWrapper}
-  color: ${COLOR.Purple200};
-`;
 
 export default Login;

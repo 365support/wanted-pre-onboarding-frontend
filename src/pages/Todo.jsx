@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { getTodoApi } from "../api/todo";
-import TodoCreate from "../component/todo/TodoCreate";
-import TodoHeader from "../component/todo/TodoHeader";
-import TodoList from "../component/todo/TodoList";
+import TodoCreate from "../component/todo/todoCreate";
+import TodoHeader from "../component/todo/todoHeader";
+import TodoList from "../component/todo/todoList";
 import { mainContainer } from "../shared/globalStyle";
 
 const Todo = () => {

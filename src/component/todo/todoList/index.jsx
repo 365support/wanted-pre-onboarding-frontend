@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { useCallback } from "react";
-import { deleteTodoApi, updateTodoApi } from "../../api/todo";
-import TodoItem from "./TodoItem";
+import { deleteTodoApi, updateTodoApi } from "../../../api/todo";
+import TodoItem from "../todoItem";
+import { todoWrapper } from "./style";
 
 const TodoList = ({ todoData, setTodoData }) => {
   const handleTodoUpdate = useCallback(
@@ -39,7 +39,7 @@ const TodoList = ({ todoData, setTodoData }) => {
 
   return (
     <div css={todoWrapper}>
-      {todoData?.map((list, id) => (
+      {todoData?.map((list) => (
         <TodoItem
           key={list.id}
           list={list}
@@ -50,10 +50,5 @@ const TodoList = ({ todoData, setTodoData }) => {
     </div>
   );
 };
-
-const todoWrapper = css`
-  overflow: auto;
-  height: 70%;
-`;
 
 export default TodoList;

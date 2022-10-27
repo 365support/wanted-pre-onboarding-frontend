@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { COLOR } from "../../shared/style";
+import styled from "@emotion/styled";
 
 export const labelCss = css`
   color: ${COLOR.White100};
@@ -50,4 +51,12 @@ export const errorWrapper = css`
   width: 65%;
   font-size: 15px;
   margin: auto;
+`;
+
+export const AuthButton = styled.button`
+  ${buttonCss}
+  background-color: ${({ emailisabled, passwordisabled }) =>
+    emailisabled === "false" || passwordisabled === "false"
+      ? "gray"
+      : `${COLOR.Purple200}`};
 `;
