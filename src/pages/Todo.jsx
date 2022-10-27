@@ -20,7 +20,7 @@ const Todo = () => {
           setTodoData(res.data);
         })
         .catch((err) => {
-          console.log("주 에러 : ", err);
+          throw new Error(err);
         });
     };
     getData();

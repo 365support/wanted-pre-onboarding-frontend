@@ -20,7 +20,7 @@ const TodoItem = ({ list }) => {
           dispatch({ type: "EDIT", todo: res.data });
         })
         .catch((err) => {
-          console.log("주 에러 : ", err);
+          throw new Error(err);
         });
     },
     [list, content]
@@ -33,7 +33,7 @@ const TodoItem = ({ list }) => {
           dispatch({ type: "DELETE", id });
         })
         .catch((err) => {
-          console.log("주 에러 : ", err);
+          throw new Error(err);
         });
     },
     [list]

@@ -17,7 +17,7 @@ const TodoCreate = () => {
         dipatch({ type: "ADD", todo: res.data });
       })
       .catch((err) => {
-        console.log(err);
+        throw new Error(err);
       });
   };
 
