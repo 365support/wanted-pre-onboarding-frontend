@@ -14,8 +14,12 @@ const useSignForm = () => {
     (key) => (e) => {
       setUserInfo({ ...userInfo, [key]: e.target.value });
 
-      if (key === "email") oncheckEmail(e.target.value);
-      if (key === "password") oncheckPassword(e.target.value);
+      if (key === "email") {
+        oncheckEmail(e.target.value);
+      }
+      if (key === "password") {
+        oncheckPassword(e.target.value);
+      }
     },
     [userInfo]
   );

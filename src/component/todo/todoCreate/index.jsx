@@ -10,7 +10,9 @@ const TodoCreate = () => {
   const dipatch = useContext(dispatchContext);
   const handleCreatedTodo = (e) => {
     e.preventDefault();
-    if (!inputRef.current.value) return;
+    if (!inputRef.current.value) {
+      return;
+    }
     createTodoApi(inputRef.current.value)
       .then((res) => {
         inputRef.current.value = "";
