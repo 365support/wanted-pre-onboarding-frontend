@@ -1,17 +1,50 @@
 /** @jsxImportSource @emotion/react */
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useContext, useState } from "react";
 import { MdDone } from "@react-icons/all-files/md/MdDone";
 import { ToastContainer } from "react-toastify";
 import notice from "../../../utils/noticeUtils";
 import * as todoItemStyle from "./style";
+import { dispatchContext } from "../../../context/TodoContext";
+import { deleteTodoApi, updateTodoApi } from "../../../api/todo";
 
-const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
+const TodoItem = ({ list }) => {
   const [modifyToggle, setModifyToggle] = useState(false);
   const [content, setContent] = useState(list);
 
-  const onInputChange = useCallback((e) => {
-    setContent({ ...content, todo: e.target.value });
-  }, []);
+  const dispatch = useContext(dispatchContext);
+
+  const handleTodoUpdate = useCallback(
+    (content) => {
+      updateTodoApi(content.id, content.todo, content.isCompleted)
+        .then((res) => {
+          dispatch({ type: "EDIT", todo: res.data });
+        })
+        .catch((err) => {
+          console.log("주 에러 : ", err);
+        });
+    },
+    [list, content]
+  );
+
+  const handleTodoDelete = useCallback(
+    (id) => {
+      deleteTodoApi(id)
+        .then((res) => {
+          dispatch({ type: "DELETE", id });
+        })
+        .catch((err) => {
+          console.log("주 에러 : ", err);
+        });
+    },
+    [list]
+  );
+
+  const onInputChange = useCallback(
+    (e) => {
+      setContent({ ...content, todo: e.target.value });
+    },
+    [content]
+  );
 
   const onCheckClick = () => {
     setContent({ ...content, isCompleted: !list.isCompleted });

@@ -12,10 +12,10 @@ const Auth = () => {
   const [isShown, onOpen, onClose] = useIsShown();
 
   return (
-    <div css={mainContainer}>
+    <section css={mainContainer}>
       <SignUp onOpen={onOpen} onClose={onClose} />
       <Login isShown={isShown} onOpen={onOpen} />
-    </div>
+    </section>
   );
 };
 

@@ -6,6 +6,7 @@ import TodoHeader from "../component/todo/todoHeader";
 import TodoList from "../component/todo/todoList";
 import useAuth from "../hooks/useAuth";
 import { mainContainer } from "../shared/globalStyle";
+import TodoContextWrapper from "../context/TodoContext";
 
 const Todo = () => {
   useAuth();
@@ -26,11 +27,13 @@ const Todo = () => {
   }, []);
 
   return (
-    <div css={mainContainer}>
+    <section css={mainContainer}>
       <TodoHeader />
-      <TodoCreate todoData={todoData} setTodoData={setTodoData} />
-      <TodoList todoData={todoData} setTodoData={setTodoData} />
-    </div>
+      <TodoContextWrapper>
+        <TodoCreate todoData={todoData} setTodoData={setTodoData} />
+        <TodoList />
+      </TodoContextWrapper>
+    </section>
   );
 };
 
