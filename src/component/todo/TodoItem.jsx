@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { memo, useCallback, useState } from "react";
 import { css } from "@emotion/react";
-import { MdDone } from "react-icons/md";
+import { MdDone } from "@react-icons/all-files/md/MdDone";
 import { ToastContainer } from "react-toastify";
 import notice from "../../utils/noticeUtils";
 import { COLOR } from "../../shared/style";
