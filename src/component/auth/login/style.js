@@ -8,8 +8,7 @@ export const LoginContainer = styled.form`
   background: ${COLOR.White100};
   border-radius: 60% / 10%;
   transition: 0.8s ease-in-out;
-  transform: ${({ isShown }) =>
-    !isShown ? "translateY(20px)" : "translateY(-290px)"};
+  transform: ${({ isShown }) => (!isShown ? "translateY(20px)" : "translateY(-290px)")};
 `;
 
 export const loginLabelCss = css`

@@ -62,14 +62,12 @@ export const hiddencheckCircle = css`
 
 export const CheckBox = styled.div`
   ${checkCircle}
-  border: ${({ isCompleted }) =>
-    isCompleted ? ` 1px solid ${COLOR.White100}` : ""};
+  border: ${({ isCompleted }) => (isCompleted ? ` 1px solid ${COLOR.White100}` : "")};
   color: ${({ isCompleted }) => (isCompleted ? `${COLOR.White100}` : "")};
 `;
 
 export const ContentDiv = styled.div`
   ${inputCss};
 
-  text-decoration: ${({ isCompleted }) =>
-    isCompleted ? "line-through" : null};
+  text-decoration: ${({ isCompleted }) => (isCompleted ? "line-through" : null)};
 `;

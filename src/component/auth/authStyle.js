@@ -56,7 +56,5 @@ export const errorWrapper = css`
 export const AuthButton = styled.button`
   ${buttonCss}
   background-color: ${({ emailisabled, passwordisabled }) =>
-    emailisabled === "false" || passwordisabled === "false"
-      ? "gray"
-      : `${COLOR.Purple200}`};
+    emailisabled === "false" || passwordisabled === "false" ? "gray" : `${COLOR.Purple200}`};
 `;

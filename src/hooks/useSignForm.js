@@ -3,8 +3,7 @@ import useValidate from "./useValidate";
 
 const useSignForm = () => {
   const [emailIsAbled, emailWarnList, oncheckEmail] = useValidate("email");
-  const [passwordIsAbled, passwordWarnList, oncheckPassword] =
-    useValidate("password");
+  const [passwordIsAbled, passwordWarnList, oncheckPassword] = useValidate("password");
 
   const [userInfo, setUserInfo] = useState({
     email: "",

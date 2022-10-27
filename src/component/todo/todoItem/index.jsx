@@ -43,35 +43,23 @@ const TodoItem = ({ list, handleTodoUpdate, handleTodoDelete }) => {
             css={todoItemStyle.inputCss}
             onChange={onInputChange}
           />
-          <button
-            onClick={handleCompleteBtnClick}
-            css={todoItemStyle.customButton}
-          >
+          <button onClick={handleCompleteBtnClick} css={todoItemStyle.customButton}>
             완료
           </button>
-          <button
-            css={todoItemStyle.basicButton}
-            onClick={handleCancelBtnClick}
-          >
+          <button css={todoItemStyle.basicButton} onClick={handleCancelBtnClick}>
             취소
           </button>
         </>
       ) : (
         <>
-          <todoItemStyle.CheckBox
-            isCompleted={list.isCompleted}
-            onClick={(e) => onCheckClick(e)}
-          >
+          <todoItemStyle.CheckBox isCompleted={list.isCompleted} onClick={(e) => onCheckClick(e)}>
             {list.isCompleted && <MdDone />}
           </todoItemStyle.CheckBox>
           <todoItemStyle.ContentDiv isCompleted={list.isCompleted}>
             {content.todo}
           </todoItemStyle.ContentDiv>
 
-          <button
-            onClick={() => setModifyToggle(true)}
-            css={todoItemStyle.customButton}
-          >
+          <button onClick={() => setModifyToggle(true)} css={todoItemStyle.customButton}>
             수정
           </button>
           <button

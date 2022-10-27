@@ -10,11 +10,7 @@ const TodoList = ({ todoData, setTodoData }) => {
       updateTodoApi(content.id, content.todo, content.isCompleted)
         .then(() => {
           const idx = todoData.findIndex((list) => list.id === content.id);
-          setTodoData([
-            ...todoData.slice(0, idx),
-            content,
-            ...todoData.slice(idx + 1),
-          ]);
+          setTodoData([...todoData.slice(0, idx), content, ...todoData.slice(idx + 1)]);
         })
         .catch((err) => {
           console.log("주 에러 : ", err);
