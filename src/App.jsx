@@ -1,13 +1,23 @@
 import { Routes, Route } from "react-router-dom";
 import Auth from "./pages/Auth";
+import { lazy, Suspense } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import Todo from "./pages/Todo";
+
+const Todo = lazy(() => import("./pages/Todo"));
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Auth />} />
-      <Route path="/todo" element={<Todo />} />
+
+      <Route
+        path="/todo"
+        element={
+          <Suspense fallback={<div>...로딩중</div>}>
+            <Todo />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 }
