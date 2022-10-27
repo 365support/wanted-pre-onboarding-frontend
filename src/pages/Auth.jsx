@@ -5,17 +5,11 @@ import { useIsShown } from "../hooks/useIsShown";
 import { mainContainer } from "../shared/globalStyle";
 import Login from "../component/auth/login";
 import SignUp from "../component/auth/signUp";
+import useAuth from "../hooks/useAuth";
 
 const Auth = () => {
+  useAuth();
   const [isShown, onOpen, onClose] = useIsShown();
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (window.localStorage.getItem("access_token")) {
-      navigate("/todo");
-    }
-  }, []);
 
   return (
     <div css={mainContainer}>
