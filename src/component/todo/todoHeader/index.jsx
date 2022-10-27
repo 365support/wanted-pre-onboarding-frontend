@@ -6,7 +6,7 @@ const TodoHeader = () => {
   const navigate = useNavigate();
 
   return (
-    <div css={todoHeaderLabelCss}>
+    <header css={todoHeaderLabelCss}>
       <label> Todo List</label>
       <button
         css={todoHeaderLogoutBtnCss}
@@ -17,7 +17,7 @@ const TodoHeader = () => {
       >
         로그아웃
       </button>
-    </div>
+    </header>
   );
 };
 

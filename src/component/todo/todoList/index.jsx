@@ -1,49 +1,33 @@
 /** @jsxImportSource @emotion/react */
-import { useCallback } from "react";
-import { deleteTodoApi, updateTodoApi } from "../../../api/todo";
+import { useContext, useEffect } from "react";
+import { getTodoApi } from "../../../api/todo";
+import { dispatchContext, todoContext } from "../../../context/TodoContext";
 import TodoItem from "../todoItem";
 import { todoWrapper } from "./style";
 
-const TodoList = ({ todoData, setTodoData }) => {
-  const handleTodoUpdate = useCallback(
-    (content) => {
-      updateTodoApi(content.id, content.todo, content.isCompleted)
-        .then(() => {
-          const idx = todoData.findIndex((list) => list.id === content.id);
-          setTodoData([...todoData.slice(0, idx), content, ...todoData.slice(idx + 1)]);
-        })
-        .catch((err) => {
-          console.log("주 에러 : ", err);
-        });
-    },
-    [todoData]
-  );
+const TodoList = () => {
+  const todoData = useContext(todoContext);
+  const dispatch = useContext(dispatchContext);
 
-  const handleTodoDelete = useCallback(
-    (id) => {
-      deleteTodoApi(id)
-        .then(() => {
-          const newData = todoData.filter((data) => data.id !== id);
-          setTodoData(newData);
+  useEffect(() => {
+    const getData = () => {
+      getTodoApi()
+        .then((res) => {
+          dispatch({ type: "INIT", initTodos: res.data });
         })
         .catch((err) => {
           console.log("주 에러 : ", err);
         });
-    },
-    [todoData]
-  );
+    };
+    getData();
+  }, []);
 
   return (
-    <div css={todoWrapper}>
+    <article css={todoWrapper}>
       {todoData?.map((list) => (
-        <TodoItem
-          key={list.id}
-          list={list}
-          handleTodoUpdate={handleTodoUpdate}
-          handleTodoDelete={handleTodoDelete}
-        />
+        <TodoItem key={list.id} list={list} />
       ))}
-    </div>
+    </article>
   );
 };
 
