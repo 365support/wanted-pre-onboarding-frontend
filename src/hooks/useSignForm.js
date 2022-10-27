@@ -1,11 +1,10 @@
 import { useCallback, useState } from "react";
-import useValidatedEmail from "./useValidatedEmail";
-import useValidatedPassword from "./useValidatedPassword";
+import useValidate from "./useValidate";
 
 const useSignForm = () => {
-  const [emailIsAbled, emailWarnList, oncheckEmail] = useValidatedEmail();
+  const [emailIsAbled, emailWarnList, oncheckEmail] = useValidate("email");
   const [passwordIsAbled, passwordWarnList, oncheckPassword] =
-    useValidatedPassword();
+    useValidate("password");
 
   const [userInfo, setUserInfo] = useState({
     email: "",
